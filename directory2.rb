@@ -1,48 +1,62 @@
-#first we print the array
-students =[
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :november},
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator",cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
-]
-# def input_students
-#     puts "please enter the names of students"
-#     puts "To finish, just hit return without typing name"
-#     students = []
-#     name = gets.chomp
-#     while !name.empty? do
-#       students << {name: name, cohort: :november}
-#       puts "now we have #{students.count} students"
-#       name = gets.chomp
-#     end
-#     students
-#   end
+def input_students
+  puts "Please enter the name of the student"
+  puts "To finish just presss enter twice"
+
+  students = []
+  name = gets.chomp
+  #a loop that repeats as long name is not empty
+  until name.empty? do
+      students << {name: name, cohort: :november}
+      puts "Now we have #{students.count} students"
+      name = gets.chomp
+  end
+  # return the array of students
+  students
+end
+
   
-  def header
+def header
   puts "The students of Villains Academy"
   puts "-------------"
+end
+
+def student_list(students)
+  index = 0
+  while index < students.length
+      puts "#{index +1 }. #{students[index][:name]} (#{students[index][:cohort]} cohort)"
+      index += 1
   end
-  
-  def student_list(persons)
-    persons.each.with_index(1) do |person, index|
-      puts "#{index}. #{person[:name]} (#{person[:cohort]} cohort)"
-    end
-  end
-  
-  def number_count(numbers)
-  puts "overall, we have #{numbers.count} great students"
-  end
-  
-#   students = input_students
-  header
-  student_list(students)
-  number_count(students)
+
+end
+
+def student_letter(students)
+  puts "enter the letter for names beginning with that letter that you want to filter for: "
+  letter = gets.chomp
+  students.each {|student| if student[:name][0] == letter
+      puts "#{student[:name]}" 
+  end }
+end
+
+def print_select_length(students)
+  puts " select the maximum length of character that you wish to filter for"
+  length = gets.chomp.to_i
+  students.each {|student| if student[:name].length <= length
+      puts "#{student[:name]}" 
+  end }
+end
+
+
+def number_count(names)
+  puts "Overall, we have #{names.count} great students"
+end
+
+
+students = input_students
+header
+student_list(students)
+number_count(students)
+
+student_letter(students)
+print_select_length(students)
   
   

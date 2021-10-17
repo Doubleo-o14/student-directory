@@ -14,7 +14,7 @@
 # ]
 def input_students
   puts "please enter the names of students"
-  puts "To finish, just hit return twice"
+  puts "To finish, just hit return without typing name"
   students = []
   name = gets.chomp
   while !name.empty? do
@@ -37,7 +37,7 @@ def student_list(persons)
 end
 
 def number_count(numbers)
-puts " overall, we have #{numbers.count} great students"
+puts "overall, we have #{numbers.count} great students"
 end
 
 students = input_students
